@@ -27,7 +27,7 @@ namespace paygw_razorpay;
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/filelib.php');
-require_once(__DIR__ . '/../extlib/razorpay-php/Razorpay.php');
+require_once(__DIR__ . '/../.extlib/razorpay-php/Razorpay.php');
 
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
