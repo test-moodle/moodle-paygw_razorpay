@@ -70,16 +70,17 @@ export const process = (component, paymentArea, itemId) => {
             modal.setBody('');
 
             return new Promise(resolve => {
-                razorpayConfig.handler = function (response){
+                razorpayConfig.handler = function(response) {
                     modal.setBody(getString('authorising', 'paygw_razorpay'));
                     Repository.markTransactionComplete(component, paymentArea, itemId, response.razorpay_order_id,
-                        response.razorpay_payment_id,response.razorpay_signature)
+                        response.razorpay_payment_id, response.razorpay_signature)
                         .then(res => {
                             modal.hide();
                             return res;
                         })
                         .then(resolve);
                 };
+                // eslint-disable-next-line no-undef
                 var rzp1 = new Razorpay(razorpayConfig);
                 rzp1.open();
             });
