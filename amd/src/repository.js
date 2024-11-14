@@ -64,7 +64,7 @@ export const markTransactionComplete = (component, paymentArea, itemId, orderId,
             itemid: itemId,
             orderid: orderId,
             paymentid: paymentId,
-            signature:signature
+            signature: signature
         },
     };
 

@@ -23,9 +23,9 @@
 
 import * as Repository from './repository';
 import Templates from 'core/templates';
-import ModalFactory from 'core/modal_factory';
+import Modal from 'core/modal';
 import ModalEvents from 'core/modal_events';
-import {get_string as getString} from 'core/str';
+import {getString} from 'core/str';
 
 
 /**
@@ -33,13 +33,11 @@ import {get_string as getString} from 'core/str';
  *
  * @returns {Promise<Modal>}
  */
-const showModalWithPlaceholder = async() => {
-    const modal = await ModalFactory.create({
-        body: await Templates.render('paygw_razorpay/razorpay_button_placeholder', {})
-    });
-    modal.show();
-    return modal;
-};
+const showModalWithPlaceholder = async() => await Modal.create({
+    body: await Templates.render('paygw_razorpay/razorpay_button_placeholder', {}),
+    show: true,
+    removeOnClose: true,
+});
 
 /**
  * Process the payment.
@@ -72,6 +70,7 @@ export const process = (component, paymentArea, itemId) => {
             return new Promise(resolve => {
                 razorpayConfig.handler = function(response) {
                     modal.setBody(getString('authorising', 'paygw_razorpay'));
+                    // eslint-disable-next-line promise/catch-or-return,promise/no-nesting
                     Repository.markTransactionComplete(component, paymentArea, itemId, response.razorpay_order_id,
                         response.razorpay_payment_id, response.razorpay_signature)
                         .then(res => {
@@ -87,9 +86,11 @@ export const process = (component, paymentArea, itemId) => {
         })
         .then(res => {
             if (res.success) {
+                // eslint-disable-next-line promise/no-return-wrap
                 return Promise.resolve(res.message);
             }
 
+            // eslint-disable-next-line promise/no-return-wrap
             return Promise.reject(res.message);
         });
 };
@@ -118,7 +119,7 @@ const switchSdk = () => {
     return new Promise(resolve => {
         if (script.readyState) {
             script.onreadystatechange = function() {
-                if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                if (this.readyState === 'complete' || this.readyState === 'loaded') {
                     this.onreadystatechange = null;
                     resolve();
                 }
