@@ -89,7 +89,7 @@ class razorpay_helper {
     public function create_order($course, $amount, $currency): array {
         global $SESSION, $USER, $DB;
         $courseinfo = $course->shortname . " " . $course->id;
-        $description = "Enrolment Fees for the Course: " . $course->shortname;
+        $description = get_string('description', 'paygw_razorpay', $course->shortname);
         $receipt = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $courseinfo)));
         $orderdetails = [
             'receipt' => $receipt,

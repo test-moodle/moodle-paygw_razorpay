@@ -36,7 +36,6 @@ class gateway extends \core_payment\gateway {
      * Get supported currencies
      */
     public static function get_supported_currencies(): array {
-        // See https://developer.razorpay.com/docs/api/reference/currency-codes/,
         // 3-character ISO-4217: https://en.wikipedia.org/wiki/ISO_4217#Active_codes.
         return [
             'AUD', 'BRL', 'CAD', 'CHF', 'CZK', 'DKK', 'EUR', 'GBP', 'HKD', 'HUF', 'ILS', 'INR', 'JPY',
