@@ -1,8 +1,13 @@
 ## Introduction
 This is a payment gateway plugin to integrate Razorpay payment gateway with Moodle.
 
+## About Razorpay
+Razorpay is an India-based fintech company that provides payment gateway services to vendors, merchants, and e-commerce platforms. 
+It allows businesses to accept, process, and disburse payments using various modes including credit cards, debit cards, netbanking, UPI, and popular wallets.
+
 ## Features
-Integrate razorpay payment gateway with Moodle.
+1. Integrate razorpay payment gateway with Moodle.
+2. Supports INR (Indian Rupees) currency only.
 
 ## Installation
 1. Download the zip file from github repository or moodle plugin directory.
@@ -13,10 +18,10 @@ Integrate razorpay payment gateway with Moodle.
 2. Grab your Razorpay API Client ID and Secret keys
 3. Configure the Razorpay payment account in Moodle with those keys and your payment method
 4. Add 'Enrolment on payment' to the Moodle courses that you want
-5. Configure the enrolment method with the currency you want to use
+5. Configure the enrolment method with the currency INR (Indian Rupees) only
 
-## Testing Credentials
-You can use following testing(sandbox) credentials to test this plugin with your moodle setup.
+## Demo Credentials
+You can use following demo(sandbox) credentials to test this plugin with your moodle setup.
 1. Client Id: rzp_test_kKjykaHKFgQy56
 2. Secret Key: mLIJrSZjIRWiWsrTzXPBp18Q
 
